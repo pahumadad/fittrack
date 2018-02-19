@@ -6,5 +6,5 @@ app = Flask("fittracker")
 app.register_blueprint(utilities)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()

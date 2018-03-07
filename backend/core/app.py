@@ -1,7 +1,9 @@
 from flask import Flask
 from .controllers.utilities import utilities
+from ..config.config import Config
 
-app = Flask("fittracker")
+app = Flask(Config.APP_NAME)
+app.config.from_object(Config)
 
 app.register_blueprint(utilities)
 

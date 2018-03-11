@@ -1,18 +1,15 @@
-from ..db.db import db
 from ..db.schema.users import Users
+
+from .queries import insert_element
+from .queries import delete_element
+from .queries import get_user_by_id
+from .queries import get_user_by_email
 
 
 class UsersModels(object):
     @staticmethod
-    def exist_user(email):
-        if not get_user(email):
-            return False
-
-        return True
-
-    @staticmethod
-    def add_user(name, email, gender=False, height=False, age=False):
-        if get_user(email):
+    def add(name, email, gender=False, height=False, age=False):
+        if get_user_by_email(email):
             raise RuntimeError("User already exist")
 
         user = Users(
@@ -22,18 +19,12 @@ class UsersModels(object):
             height=height,
             age=age
         )
-        db.session.add(user)
-        db.session.commit()
+        insert_element(user)
 
     @staticmethod
-    def delete_user(email):
-        user = get_user(email)
+    def delete(id):
+        user = get_user_by_id(id)
         if not user:
             raise RuntimeError("User not found")
 
-        db.session.delete(user)
-        db.session.commit()
-
-
-def get_user(email):
-    return Users.query.filter_by(email=email).first()
+        delete_element(user)

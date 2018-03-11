@@ -5,6 +5,7 @@ from flask_migrate import MigrateCommand
 from backend.core.app import app
 from backend.core.db.db import db
 from backend.core.db.schema.users import Users
+from backend.core.db.schema.measurements import Measurements
 
 
 migrate = Migrate(app, db)

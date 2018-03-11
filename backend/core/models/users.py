@@ -4,6 +4,7 @@ from .queries import insert_element
 from .queries import delete_element
 from .queries import get_user_by_id
 from .queries import get_user_by_email
+from .queries import get_user_measurements
 
 
 class UsersModels(object):
@@ -28,3 +29,11 @@ class UsersModels(object):
             raise RuntimeError("User not found")
 
         delete_element(user)
+
+    @staticmethod
+    def measurements(id):
+        user = get_user_by_id(id)
+        if not user:
+            raise RuntimeError("User not found")
+
+        return get_user_measurements(id)

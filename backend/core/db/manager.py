@@ -6,12 +6,13 @@ from backend.core.app import app
 from backend.core.db.db import db
 from backend.core.db.schema.users import Users
 from backend.core.db.schema.measurements import Measurements
+from backend.core.db.schema.user_measurements import UserMeasurements
 
 
 migrate = Migrate(app, db)
 manager = Manager(app)
-manager.add_command('db', MigrateCommand)
+manager.add_command("db", MigrateCommand)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     manager.run()

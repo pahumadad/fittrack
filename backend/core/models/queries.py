@@ -2,6 +2,7 @@ from ..db.db import db
 from ..db.schema.users import Users
 from ..db.schema.measurements import Measurements
 from ..db.schema.user_measurements import UserMeasurements
+from ..db.schema.measurements_sessions import MeasurementsSessions
 
 
 def delete_element(element):
@@ -44,6 +45,14 @@ def get_user_measurements(user_id):
         .all()
 
 
+def get_user_measurements_sessions(user_id):
+    return MeasurementsSessions.query \
+        .filter_by(user=user_id) \
+        .order_by(MeasurementsSessions.date.desc(),
+                  MeasurementsSessions.id.desc()) \
+        .all()
+
+
 def get_measurement_by_id(m_id):
     return Measurements.query.filter_by(id=m_id).first()
 
@@ -57,3 +66,7 @@ def delete_user_measurements(user_id, measurements):
         .where(UserMeasurements.user == user_id) \
         .where(UserMeasurements.measurement.in_(measurements))
     db.engine.execute(stmt)
+
+
+def get_measurements_session_by_id(m_s_id):
+    return MeasurementsSessions.query.filter_by(id=m_s_id).first()

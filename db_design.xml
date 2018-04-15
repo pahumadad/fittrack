@@ -31,16 +31,16 @@
 		<type label="Year" length="0" sql="YEAR" quote=""/>
 		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
 	</group>
-	
+
 	<group label="Miscellaneous" color="rgb(200,200,255)">
 		<type label="ENUM" length="1" sql="ENUM" quote=""/>
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="784" y="133" name="weight_tracker">
+</datatypes><table x="888" y="36" name="measurements_tracker">
 <row name="session" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="weight_sessions" row="id" />
+<default>NULL</default><relation table="measurements_sessions" row="id" />
 </row>
 <row name="measurement" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -92,7 +92,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="954" y="9" name="bmi">
+<table x="891" y="169" name="bmi">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -102,11 +102,14 @@
 <row name="desc" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="conclusion" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1053" y="9" name="bfp">
+<table x="892" y="297" name="bfp">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -119,11 +122,14 @@
 <row name="desc" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="conclusion" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1148" y="9" name="muscle">
+<table x="995" y="169" name="muscle">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -136,11 +142,14 @@
 <row name="desc" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="conclusion" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1268" y="9" name="visceral">
+<table x="995" y="320" name="visceral">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -148,6 +157,9 @@
 <datatype>DECIMAL</datatype>
 <default>NULL</default></row>
 <row name="desc" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="conclusion" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -223,7 +235,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="570" y="26" name="weight_sessions">
+<table x="533" y="10" name="measurements_sessions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -234,11 +246,14 @@
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
+<row name="new field" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="614" y="339" name="workout_sessions">
+<table x="590" y="327" name="workout_sessions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

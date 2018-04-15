@@ -2,6 +2,7 @@ from ..db.db import db
 from ..db.schema.users import Users
 from ..db.schema.measurements import Measurements
 from ..db.schema.user_measurements import UserMeasurements
+from ..db.schema.measurements_tracker import MeasurementsTracker
 from ..db.schema.measurements_sessions import MeasurementsSessions
 
 
@@ -53,6 +54,14 @@ def get_user_measurements_sessions(user_id):
         .all()
 
 
+def get_user_measurements_tracks(u_id, m_id):
+    return MeasurementsTracker.query \
+        .filter(MeasurementsTracker.measurement == m_id) \
+        .join(MeasurementsSessions) \
+        .filter(MeasurementsSessions.user == u_id) \
+        .all()
+
+
 def get_measurement_by_id(m_id):
     return Measurements.query.filter_by(id=m_id).first()
 
@@ -70,3 +79,7 @@ def delete_user_measurements(user_id, measurements):
 
 def get_measurements_session_by_id(m_s_id):
     return MeasurementsSessions.query.filter_by(id=m_s_id).first()
+
+
+def get_measurements_tracker_by_id(m_t_id):
+    return MeasurementsTracker.query.filter_by(id=m_t_id).first()

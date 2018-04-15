@@ -8,6 +8,7 @@ from backend.core.db.schema.users import Users
 from backend.core.db.schema.measurements import Measurements
 from backend.core.db.schema.user_measurements import UserMeasurements
 from backend.core.db.schema.measurements_sessions import MeasurementsSessions
+from backend.core.db.schema.measurements_tracker import MeasurementsTracker
 
 
 migrate = Migrate(app, db)

@@ -4,7 +4,9 @@ from .queries import insert_element
 from .queries import delete_element
 from .queries import get_user_by_id
 from .queries import get_user_by_email
+from .queries import get_measurement_by_id
 from .queries import get_user_measurements
+from .queries import get_user_measurements_tracks
 from .queries import get_user_measurements_sessions
 
 
@@ -46,3 +48,15 @@ class UsersModels(object):
             raise RuntimeError("User not found")
 
         return get_user_measurements_sessions(id)
+
+    @staticmethod
+    def measurements_tracks(u_id, m_id):
+        user = get_user_by_id(u_id)
+        if not user:
+            raise RuntimeError("User not found")
+
+        msr = get_measurement_by_id(m_id)
+        if not msr:
+            raise RuntimeError("Measurement not found")
+
+        return get_user_measurements_tracks(u_id, m_id)

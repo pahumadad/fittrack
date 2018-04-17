@@ -11,4 +11,4 @@ class MeasurementsTracker(db.Model):
                             db.ForeignKey("measurements.id"),
                             nullable=False)
     value = db.Column(db.Float)
-    conclusion = db.Column(db.String(120))
+    conclusion = db.Column(db.String(120), nullable=True)

@@ -4,6 +4,10 @@ from ..db.schema.measurements import Measurements
 from ..db.schema.user_measurements import UserMeasurements
 from ..db.schema.measurements_tracker import MeasurementsTracker
 from ..db.schema.measurements_sessions import MeasurementsSessions
+from ..db.schema.bfp import BFP
+from ..db.schema.bmi import BMI
+from ..db.schema.muscle import Muscle
+from ..db.schema.visceral import Visceral
 
 
 def delete_element(element):
@@ -83,3 +87,29 @@ def get_measurements_session_by_id(m_s_id):
 
 def get_measurements_tracker_by_id(m_t_id):
     return MeasurementsTracker.query.filter_by(id=m_t_id).first()
+
+
+def get_bfp_conclusion(value, gender):
+    if gender == "female":
+        return BFP.query.filter(BFP.female_up_limit >= value).first()
+    elif gender == "male":
+        return BFP.query.filter(BFP.male_up_limit >= value).first()
+    else:
+        return None
+
+
+def get_bmi_conclusion(value):
+    return BMI.query.filter(BMI.up_limit >= value).first()
+
+
+def get_muscle_conclusion(value, gender):
+    if gender == "female":
+        return Muscle.query.filter(Muscle.female_up_limit >= value).first()
+    elif gender == "male":
+        return Muscle.query.filter(Muscle.male_up_limit >= value).first()
+    else:
+        return None
+
+
+def get_visceral_conclusion(value):
+    return Visceral.query.filter(Visceral.up_limit >= value).first()

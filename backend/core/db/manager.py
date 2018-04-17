@@ -9,6 +9,10 @@ from backend.core.db.schema.measurements import Measurements
 from backend.core.db.schema.user_measurements import UserMeasurements
 from backend.core.db.schema.measurements_sessions import MeasurementsSessions
 from backend.core.db.schema.measurements_tracker import MeasurementsTracker
+from backend.core.db.schema.bfp import BFP
+from backend.core.db.schema.bmi import BMI
+from backend.core.db.schema.muscle import Muscle
+from backend.core.db.schema.visceral import Visceral
 
 
 migrate = Migrate(app, db)

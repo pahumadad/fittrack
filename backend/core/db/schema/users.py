@@ -1,4 +1,6 @@
 from ..db import db
+from .user_measurements import UserMeasurements
+from .measurements_sessions import MeasurementsSessions
 
 
 class Users(db.Model):
@@ -9,3 +11,11 @@ class Users(db.Model):
     gender = db.Column(db.String(6))
     height = db.Column(db.Float)
     age = db.Column(db.Integer)
+    measurements = db.relationship("UserMeasurements",
+                                   backref="users",
+                                   lazy="dynamic",
+                                   foreign_keys="UserMeasurements.user")
+    sessions = db.relationship("MeasurementsSessions",
+                               backref="users",
+                               lazy="dynamic",
+                               foreign_keys="MeasurementsSessions.user")
